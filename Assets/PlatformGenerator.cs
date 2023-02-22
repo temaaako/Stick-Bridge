@@ -58,6 +58,6 @@ public class PlatformGenerator : MonoBehaviour
         return platform;
     }
 
-    public void GenerateBiggestLeft()
+
 
 }
