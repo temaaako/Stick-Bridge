@@ -6,13 +6,10 @@ using System;
 public class Game : MonoBehaviour
 {
 
-    [SerializeField] public Player _player;
     [SerializeField] private Platform _currentPlatform;
     [SerializeField] public Platform _nextPlatform;
-    [SerializeField] private float _allPlatformMoveDuration = 2;
 
     private PlatformGenerator platformGenerator;
-    private AllPlatforms allPlatforms;
     private StickManager _stickManager;
     private BridgeChecker _bridgeChecker;
     private DifficultyManager _difficultyManager;
@@ -45,7 +42,6 @@ public class Game : MonoBehaviour
         Application.targetFrameRate = FrameRate;
         QualitySettings.vSyncCount = 0;
         platformGenerator = FindObjectOfType<PlatformGenerator>();
-        allPlatforms = FindObjectOfType<AllPlatforms>();
         _stickManager= FindObjectOfType<StickManager>();
         _bridgeChecker = new BridgeChecker();
         _difficultyManager = FindObjectOfType<DifficultyManager>();
@@ -92,20 +88,6 @@ public class Game : MonoBehaviour
         }
     }
     
-    Vector3 GetNewCameraPosition()
-    {
-        return _currentPlatform.transform.position + new Vector3(_currentPlatform.GetComponent<SpriteRenderer>().size.x / 2 - _stickManager.StickOffset - _stickManager.Stick.Width / 2, 0, 0) - _player.transform.position;
-    }
-
-    private IEnumerator MakeTransition()
-    {
-        allPlatforms.transform.DOMove(allPlatforms.transform.position - new Vector3(GetNewCameraPosition().x, 0, 0), _allPlatformMoveDuration);
-        _player.Run();
-        yield return new WaitForSeconds(_allPlatformMoveDuration);
-        _player.Idle();
-        _stickManager.Stick.gameObject.SetActive(false);
-        EventManager.Instance.TransitionEnded();
-    }
 
     private void OnTransitionEnded()
     {
@@ -123,10 +105,11 @@ public class Game : MonoBehaviour
     {
         if (_bridgeChecker.BridgeWorks(_stickManager.Stick, _nextPlatform))
         {
+            EventManager.Instance.TransitionStarted(new Vector3 (_currentPlatform.GetRightEdgePosition().x-_nextPlatform.GetRightEdgePosition().x, 0 , 0));
             _currentPlatform = _nextPlatform;
             _nextPlatform = platformGenerator.Generate(_currentPlatform.GetRightEdgePosition(), _difficultyManager.GetGenerationSettings(), true);
             Score++;
-            StartCoroutine(MakeTransition());
+            
         }
         else
         {

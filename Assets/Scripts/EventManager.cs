@@ -1,14 +1,21 @@
 using System;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class EventManager 
 {
-    public static EventManager Instance { get; private set; }
+    private static EventManager instance;
+    public static EventManager Instance {
+        get
+        {
+            if (instance ==null)
+            {
+                instance = new EventManager();
+            }
+            return instance;
+        }
+        }
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+  
 
     public event Action<int> gameOver;
     public event Action<int> scoreChanged;
@@ -16,8 +23,10 @@ public class EventManager : MonoBehaviour
     public event Action stickStopScaling;
     public event Action inputIsHolding;
     public event Action inputEnded;
+    public event Action <Vector3> transitionStarted;
     public event Action transitionEnded;
     public event Action stickFell;
+
 
     public void GameOver(int score)
     {
@@ -55,5 +64,10 @@ public class EventManager : MonoBehaviour
     public void StickFell()
     {
         stickFell?.Invoke();
+    }
+
+    public void TransitionStarted(Vector3 transitionVector)
+    {
+        transitionStarted?.Invoke(transitionVector);
     }
 }

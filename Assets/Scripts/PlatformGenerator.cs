@@ -12,10 +12,6 @@ public class PlatformGenerator : MonoBehaviour
 
     [SerializeField] private float _startAnimationY = -10f;
 
-
-   
-
-
     [SerializeField] private Vector2 _firstPlatformPosition = new Vector2(-2, -2);
     [SerializeField] private float _firstPlatformSize = 2.48f;
 

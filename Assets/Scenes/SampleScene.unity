@@ -386,6 +386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449074833}
   - component: {fileID: 449074834}
+  - component: {fileID: 449074835}
   m_Layer: 0
   m_Name: All Platforms
   m_TagString: Untagged
@@ -423,6 +424,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d189dc1d20d2c4ea309aee33ed0db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &449074835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449074832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13869385f72de334284f3f91255efe9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitionTime: 2
 --- !u!1001 &457536904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,10 +631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f62767b53048624bbf4d55b09b9894a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 423245997}
   _currentPlatform: {fileID: 1309171440544493968}
   _nextPlatform: {fileID: 1961440290}
-  _allPlatformMoveDuration: 1
   IsInputAllowed: 1
   FrameRate: 120
 --- !u!4 &613651175
@@ -668,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stickPrefab: {fileID: 1182271710684701960, guid: b3f85c2cc5c2b5c4c9948177dfb6ae3b, type: 3}
-  _stickOffset: 1
+  _stickOffset: 0.215
   _stickScaleSpeed: 2
   _stickFallTime: 2
   _stick: {fileID: 1775685958}
@@ -1400,11 +1412,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1036478552722623743, guid: b3f85c2cc5c2b5c4c9948177dfb6ae3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.08
+      value: -1.715
       objectReference: {fileID: 0}
     - target: {fileID: 1036478552722623743, guid: b3f85c2cc5c2b5c4c9948177dfb6ae3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.49
+      value: -1.902
       objectReference: {fileID: 0}
     - target: {fileID: 1036478552722623743, guid: b3f85c2cc5c2b5c4c9948177dfb6ae3b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1865,7 +1877,7 @@ MonoBehaviour:
   prefab: {fileID: 2475410102199804354, guid: 438dedbba19dd4047ad7bfb89e4336da, type: 3}
   _moveUpDuration: 0.5
   _startAnimationY: -7
-  _firstPlatformPosition: {x: -2, y: -3.95}
+  _firstPlatformPosition: {x: -2.89, y: -3.95}
   _firstPlatformSize: 2.48
 --- !u!4 &1491483405
 Transform:
@@ -2641,7 +2653,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2024604771}
-  - component: {fileID: 2024604770}
   m_Layer: 0
   m_Name: Event Manager
   m_TagString: Untagged
@@ -2649,18 +2660,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2024604770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024604769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caf9e01b154ae864bae6a6e413c3c001, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2024604771
 Transform:
   m_ObjectHideFlags: 0

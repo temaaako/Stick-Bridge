@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class StickManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class StickManager : MonoBehaviour
 
     private Game _game;
 
+    private Player _player;
+
     [SerializeField] private GameObject _allPlatforms;
 
 
@@ -24,7 +27,7 @@ public class StickManager : MonoBehaviour
 
     void Awake()
     {
-        
+        _player = FindObjectOfType<Player>();
         _game = FindObjectOfType<Game>();
         if (_stick.gameObject.activeSelf == true)
         {
@@ -50,6 +53,8 @@ public class StickManager : MonoBehaviour
 
     private void OnTransitionEnded()
     {
+        _stick.gameObject.SetActive(false);
+
         _stick.SetStartingSize();
     }
 
@@ -82,7 +87,7 @@ public class StickManager : MonoBehaviour
 
     private void ActivateStick()
     {
-        _stickPos = _game._player.transform.position + new Vector3(_stickOffset, -_game._player.transform.localScale.y / 2, 0);
+        _stickPos = _player.transform.position + new Vector3(_stickOffset, -_player.transform.localScale.y / 2, 0);
         _stick.transform.position = _stickPos;
         _stick.transform.rotation = new Quaternion(0, 0, 0, 0);
         _stick.gameObject.SetActive(true);
@@ -106,5 +111,5 @@ public class StickManager : MonoBehaviour
         _game.IsInputAllowed = true;
     }
 
-
+ 
 }
