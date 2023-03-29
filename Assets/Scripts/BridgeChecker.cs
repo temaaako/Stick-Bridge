@@ -17,7 +17,6 @@ public class BridgeChecker
         float platformRightDistance = platformLeftDistance + platformSizeX;
 
 
-        Debug.Log($"StickLengt = {stickLength}, platform sizeX = {platformSizeX}, left = {platformLeftDistance}, right = {platformRightDistance}");
 
         if (platformLeftDistance <= stickLength && stickLength <= platformRightDistance)
             return true;

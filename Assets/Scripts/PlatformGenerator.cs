@@ -18,13 +18,14 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private float _firstPlatformSize = 2.48f;
     [SerializeField] private float _screenBorderXOffset=0.2f;
 
+    
+
     private Game _game;
     private AllPlatforms _allPlatforms;
     private DifficultyManager _difficultyManager;
 
     private float _screenBorderXCoord;
 
-    private Vector3 _startPoint;
 
 
     private void OnEnable()
@@ -53,18 +54,11 @@ public class PlatformGenerator : MonoBehaviour
     private void Start()
     {
         SetStartingPlatforms();
-        _startPoint = _game.currentPlatform.GetRightEdgePosition();
-        Debug.Log("_start point: "+ _startPoint);
     }
 
     public Platform Generate(Vector3 currentPlatformEdgePos, PlatformGenerationSettings generationSettings, bool isAnimated)
     {
-        if (generationSettings.maxDistance>_screenBorderXCoord- _startPoint.x || generationSettings.maxSize > _screenBorderXCoord - _startPoint.x)
-        {
-            Debug.Log($"Max size: {generationSettings.maxSize}, screen border coord: {_screenBorderXCoord}, start point x coord: {_startPoint.x}");
-            Debug.LogError((generationSettings.maxDistance > _screenBorderXCoord - _startPoint.x) + "   "+ (generationSettings.maxSize > _screenBorderXCoord - _startPoint.x));
-            throw new ArgumentException("Incorrect generation settings");
-        }
+        
 
         float sizeX = Random.Range(generationSettings.minSize, generationSettings.maxSize);
 
@@ -102,7 +96,7 @@ public class PlatformGenerator : MonoBehaviour
     private void SetStartingPlatforms()
     {
         _game.currentPlatform = Generate(_firstPlatformPosition, _firstPlatformSize);
-        _game.nextPlatform = Generate(_game.currentPlatform.GetRightEdgeXPosition(), _difficultyManager.GetStartingGenerationSettings(), false);
+        _game.nextPlatform = Generate(_game.currentPlatform.GetRightEdgeXPosition(), _difficultyManager.GetStartingGenerationSettings(), false);    
     }
 
     private void DestroyAllPlatforms()

@@ -1,23 +1,21 @@
+using System;
 using UnityEngine;
 
 public class DifficultyManager : MonoBehaviour
 {
     [Header("Platforms")]
-    [SerializeField] private float _startPlatformMinSize = 1f;
-    [SerializeField] private float _startPlatformMaxSize = 3f;
-
-    [SerializeField] private float _startPlatformMinDistance = 1f;
-    [SerializeField] private float _startPlatformMaxDistance = 3f;
-
-    private float _platformMinSize = 1f;
-    private float _platformMaxSize = 3f;
-    private float _platformMinDistance = 1f;
-    private float _platformMaxDistance = 3f;
+    
 
 
+    [SerializeField] private Difficulty[] _difficulties;
 
+    [SerializeField] private int _difficultyStep = 5;
 
-    private Difficulty _difficulty = Difficulty.EASY;
+    private Difficulty _difficulty;
+
+    private int _difficultyNum=0;
+
+    private int _lastChangeNum=0;
 
     private void OnEnable()
     {
@@ -32,54 +30,57 @@ public class DifficultyManager : MonoBehaviour
     }
 
 
-
+    private void Awake()
+    {
+        SetStartingDifficulty();
+    }
 
     private void OnGameOver(int obj)
     {
-        _difficulty = Difficulty.EASY;
+        SetStartingDifficulty();
     }
 
     public PlatformGenerationSettings GetGenerationSettings()
     {
-        return GetStartingGenerationSettings();
-        //return new PlatformGenerationSettings(_platformMinSize, _platformMaxSize, _platformMinDistance, _platformMaxDistance);
+        return _difficulty.GetGenerationSettings();
     }
 
     public PlatformGenerationSettings GetStartingGenerationSettings()
     {
-        return new PlatformGenerationSettings(_startPlatformMinSize, _startPlatformMaxSize, _startPlatformMinDistance, _startPlatformMaxDistance);
+        
+        return _difficulties[0].GetGenerationSettings();
     }
 
     private void OnScoreChanged(int score)
     {
-        switch (score)
+        if (_difficulties.Length - 1 <= _difficultyNum) return;
+
+
+        Debug.Log($"_lastChangeNum: {_lastChangeNum}, difficultyStep {_difficultyStep}, score {score}");
+
+        if (_lastChangeNum+_difficultyStep<=score)
         {
-            case 10:
-                _difficulty = Difficulty.MEDIUM;
-                break;
-            case 20:
-                _difficulty = Difficulty.HARD;
-                break;
+            _lastChangeNum= score;
+            _difficultyNum++;
+            _difficulty = _difficulties[_difficultyNum];
 
-            default:
-                break;
+            Debug.Log(_difficulty.name);
         }
+        
     }
 
-
-    [SerializeField] private GameObject startPointObject;
-
-    private void OnDrawGizmos()
+    private void SetStartingDifficulty()
     {
-        Gizmos.color = Color.red;
-        Vector3 rightEdge = startPointObject.transform.position + new Vector3(startPointObject.GetComponent<SpriteRenderer>().size.x / 2, startPointObject.GetComponent<SpriteRenderer>().size.y / 2, 0);  
-        Gizmos.DrawSphere(rightEdge, 0.05f);
-        Gizmos.DrawLine(rightEdge + new Vector3(_startPlatformMinDistance, 0, 0), rightEdge + new Vector3(_startPlatformMaxDistance + _startPlatformMaxSize, 0, 0));
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(rightEdge + new Vector3(_startPlatformMinDistance, 0.2f, 0), rightEdge + new Vector3(_startPlatformMinDistance + _startPlatformMaxSize, 0.2f, 0));
+        _difficultyNum = 0;
 
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(rightEdge + new Vector3(_startPlatformMinDistance, 0.4f, 0), rightEdge + new Vector3(_startPlatformMinDistance + _startPlatformMinSize  , 0.4f, 0));
+        _difficulty = _difficulties[_difficultyNum];
+
+        _lastChangeNum = 0;
     }
+
+
+    
+
+   
 }

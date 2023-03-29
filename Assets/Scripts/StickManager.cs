@@ -76,7 +76,6 @@ public class StickManager : MonoBehaviour
     {
         if (_stick.gameObject.activeSelf == false)
         {
-            Debug.Log("activateStick");
             ActivateStick();
         }
         else

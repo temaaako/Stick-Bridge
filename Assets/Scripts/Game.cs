@@ -8,13 +8,14 @@ public class Game : MonoBehaviour
 
     [SerializeField] public Platform currentPlatform;
     [SerializeField] public Platform nextPlatform;
+    [SerializeField] private float _maxInputTime = 10f;
 
     private PlatformGenerator platformGenerator;
     private StickManager _stickManager;
     private BridgeChecker _bridgeChecker;
     private DifficultyManager _difficultyManager;
     private int _score;
-
+    private float _inputTime = 0f;
 
     public bool IsInputAllowed = true;
 
@@ -79,11 +80,13 @@ public class Game : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
             EventManager.Instance.InputIsHolding();
+            _inputTime += Time.deltaTime;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)||_inputTime>=_maxInputTime)
         {
             EventManager.Instance.InputEnded();
+            _inputTime = 0f;
         }
     }
     
