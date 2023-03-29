@@ -6,8 +6,8 @@ using System;
 public class Game : MonoBehaviour
 {
 
-    [SerializeField] private Platform _currentPlatform;
-    [SerializeField] public Platform _nextPlatform;
+    [SerializeField] public Platform currentPlatform;
+    [SerializeField] public Platform nextPlatform;
 
     private PlatformGenerator platformGenerator;
     private StickManager _stickManager;
@@ -25,7 +25,6 @@ public class Game : MonoBehaviour
         get { return _score; }
         set
         {
-
             if (value>=0)
             {
                 EventManager.Instance.ScoreChanged(value);
@@ -103,11 +102,11 @@ public class Game : MonoBehaviour
 
     private void OnStickFell()
     {
-        if (_bridgeChecker.BridgeWorks(_stickManager.Stick, _nextPlatform))
+        if (_bridgeChecker.BridgeWorks(_stickManager.Stick, nextPlatform))
         {
-            EventManager.Instance.TransitionStarted(new Vector3 (_currentPlatform.GetRightEdgePosition().x-_nextPlatform.GetRightEdgePosition().x, 0 , 0));
-            _currentPlatform = _nextPlatform;
-            _nextPlatform = platformGenerator.Generate(_currentPlatform.GetRightEdgePosition(), _difficultyManager.GetGenerationSettings(), true);
+            EventManager.Instance.TransitionStarted(new Vector3 (currentPlatform.GetRightEdgeXPosition().x-nextPlatform.GetRightEdgeXPosition().x, 0 , 0));
+            currentPlatform = nextPlatform;
+            nextPlatform = platformGenerator.Generate(currentPlatform.GetRightEdgeXPosition(), _difficultyManager.GetGenerationSettings(), true);
             Score++;
             
         }
@@ -120,7 +119,7 @@ public class Game : MonoBehaviour
 
     public void SetNextPlatform(Platform platform)
     {
-        _nextPlatform = platform;
+        nextPlatform = platform;
     }
 
 

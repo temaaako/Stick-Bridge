@@ -25,14 +25,14 @@ public class AudioManager : MonoBehaviour
     {
         EventManager.Instance.inputIsHolding += OnInputIsHolding;
         EventManager.Instance.inputEnded += OnInputEnded;
-        EventManager.Instance.stickFell += OnStickFell;
+        EventManager.Instance.transitionStarted += OnTransitionStarted;
     }
 
     private void OnDisable()
     {
         EventManager.Instance.inputIsHolding -= OnInputIsHolding;
         EventManager.Instance.inputEnded -= OnInputEnded;
-        EventManager.Instance.stickFell -= OnStickFell;
+        EventManager.Instance.transitionStarted -= OnTransitionStarted;
     }
 
 
@@ -88,14 +88,14 @@ public class AudioManager : MonoBehaviour
 
         }
 
-        if (endVolume == 0)
+        if (endVolume == 0f)
         {
             audioSource.Stop();
         }
 
     }
 
-    private void OnStickFell()
+    private void OnTransitionStarted(Vector3 vector)
     {
         _dropSound.Play();
     }

@@ -1,5 +1,7 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlatformGenerator : MonoBehaviour
 {
@@ -14,36 +16,66 @@ public class PlatformGenerator : MonoBehaviour
 
     [SerializeField] private Vector2 _firstPlatformPosition = new Vector2(-2, -2);
     [SerializeField] private float _firstPlatformSize = 2.48f;
-
+    [SerializeField] private float _screenBorderXOffset=0.2f;
 
     private Game _game;
     private AllPlatforms _allPlatforms;
     private DifficultyManager _difficultyManager;
+
+    private float _screenBorderXCoord;
+
+    private Vector3 _startPoint;
+
+
+    private void OnEnable()
+    {
+        EventManager.Instance.gameRestarted += OnGameReset;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.gameRestarted -= OnGameReset;
+    }
 
     private void Awake()
     {
          _allPlatforms=FindObjectOfType<AllPlatforms>();
         _game = FindObjectOfType<Game>();
         _difficultyManager = FindObjectOfType<DifficultyManager>();
+
+        _screenBorderXCoord = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - _screenBorderXOffset;
+
+        
+        Debug.Log(_screenBorderXCoord);
     }
 
 
     private void Start()
     {
         SetStartingPlatforms();
+        _startPoint = _game.currentPlatform.GetRightEdgePosition();
+        Debug.Log("_start point: "+ _startPoint);
     }
 
-    public Platform Generate(Vector3 edgePos, PlatformGenerationSettings generationSettings, bool isAnimated)
+    public Platform Generate(Vector3 currentPlatformEdgePos, PlatformGenerationSettings generationSettings, bool isAnimated)
     {
+        if (generationSettings.maxDistance>_screenBorderXCoord- _startPoint.x || generationSettings.maxSize > _screenBorderXCoord - _startPoint.x)
+        {
+            Debug.Log($"Max size: {generationSettings.maxSize}, screen border coord: {_screenBorderXCoord}, start point x coord: {_startPoint.x}");
+            Debug.LogError((generationSettings.maxDistance > _screenBorderXCoord - _startPoint.x) + "   "+ (generationSettings.maxSize > _screenBorderXCoord - _startPoint.x));
+            throw new ArgumentException("Incorrect generation settings");
+        }
+
         float sizeX = Random.Range(generationSettings.minSize, generationSettings.maxSize);
+
         float distance = Random.Range(generationSettings.minDistance, generationSettings.maxDistance);
 
-        Vector3 position = new Vector3(edgePos.x + distance + sizeX / 2, edgePos.y, edgePos.z);
+        Vector3 position = new Vector3(currentPlatformEdgePos.x + distance + sizeX / 2, currentPlatformEdgePos.y, currentPlatformEdgePos.z);
         Platform platform;
 
         if (isAnimated)
         {
-            Vector3 startPosition = new Vector3(edgePos.x + distance + sizeX / 2, _startAnimationY, edgePos.z);
+            Vector3 startPosition = new Vector3(currentPlatformEdgePos.x + distance + sizeX / 2, _startAnimationY, currentPlatformEdgePos.z);
             platform = Instantiate(prefab, startPosition, Quaternion.identity, _allPlatforms.transform);
             platform.transform.DOMoveY(position.y, _moveUpDuration).SetEase(Ease.InSine);
         }
@@ -57,12 +89,11 @@ public class PlatformGenerator : MonoBehaviour
         return platform;
     }
 
-    public Platform Generate(Vector3 position, float size)
+    private Platform Generate(Vector3 position, float size)
     {
 
         Platform platform = Instantiate(prefab, position, Quaternion.identity, _allPlatforms.transform);
         platform.GetComponent<SpriteRenderer>().size = new Vector3(size, platform.GetComponent<SpriteRenderer>().size.y);
-
 
         return platform;
     }
@@ -70,13 +101,13 @@ public class PlatformGenerator : MonoBehaviour
 
     private void SetStartingPlatforms()
     {
-        var _currentPlatform = Generate(_firstPlatformPosition, _firstPlatformSize);
-        _game._nextPlatform = Generate(_currentPlatform.GetRightEdgePosition(), _difficultyManager.GetStartingGenerationSettings(), false);
+        _game.currentPlatform = Generate(_firstPlatformPosition, _firstPlatformSize);
+        _game.nextPlatform = Generate(_game.currentPlatform.GetRightEdgeXPosition(), _difficultyManager.GetStartingGenerationSettings(), false);
     }
 
-    public void DestroyAllPlatforms()
+    private void DestroyAllPlatforms()
     {
-        var objects = GameObject.FindObjectsOfType<Platform>();
+        var objects = FindObjectsOfType<Platform>();
         foreach (Platform o in objects)
         {
             Destroy(o.gameObject);

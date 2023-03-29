@@ -33,9 +33,9 @@ public class Transitor : MonoBehaviour
     }
 
 
+
     private void OnTransitionStarted(Vector3 transition)
     {
-        Debug.Log(transition);
         StartCoroutine(MakeTransition(transition));
     }
 
