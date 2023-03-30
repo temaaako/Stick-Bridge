@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using DG.Tweening;
 using System;
 
 public class Game : MonoBehaviour

@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -66,8 +64,9 @@ public class AudioManager : MonoBehaviour
 
     private void StopScalingSound()
     {
-        _scalingCoroutine = VolumeFade(_scalingSound, 0f, _fadeTime);
-        StartCoroutine(_scalingCoroutine);
+
+       _scalingCoroutine = VolumeFade(_scalingSound, 0f, _fadeTime);
+       StartCoroutine(_scalingCoroutine);
     }
 
 
