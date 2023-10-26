@@ -85,7 +85,14 @@ public class StickManager : MonoBehaviour
 
     private void ActivateStick()
     {
-        _stickPos = _player.transform.position + new Vector3(_stickOffset, -_player.transform.localScale.y / 2, 0);
+        Debug.Log(_player.transform.localScale);
+        Debug.Log(_player.transform.position);
+
+        SpriteRenderer spriteRenderer = _player.GetComponent<SpriteRenderer>(); // Получаем компонент SpriteRenderer объекта
+        float bottomY = _player.transform.position.y - spriteRenderer.bounds.extents.y;
+
+        _stickPos = _player.transform.position + new Vector3(_stickOffset, -spriteRenderer.bounds.extents.y, 0);
+        Debug.Log(_stickPos);
         _stick.transform.position = _stickPos;
         _stick.transform.rotation = new Quaternion(0, 0, 0, 0);
         _stick.gameObject.SetActive(true);

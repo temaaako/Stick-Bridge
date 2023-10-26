@@ -1,0 +1,298 @@
+fileFormatVersion: 2
+guid: 336a0e95115d486478419afa56e0e1c5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Custom Edited - Minecraft Customs - Steve_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 408
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e16106356222c1a4cb514eb7885c2f09
+      internalID: 162567524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Minecraft Customs - Steve_2
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 360
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc090d7c3c8d2b548ac0d32cae0eb2e5
+      internalID: -778191640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Minecraft Customs - Steve_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 360
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 434fd277fda76c349915d87367a58fd9
+      internalID: -272596584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Minecraft Customs - Steve_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 360
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4863117d53f24e4eab335b6d52a98db
+      internalID: 948800708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Minecraft Customs - Steve_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 360
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bff0084902b8d543add5d3e6e791336
+      internalID: -1902615033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Custom Edited - Minecraft Customs - Steve_0: 162567524
+      Custom Edited - Minecraft Customs - Steve_1: 1198883693
+      Custom Edited - Minecraft Customs - Steve_10: 1024742300
+      Custom Edited - Minecraft Customs - Steve_11: 1442673688
+      Custom Edited - Minecraft Customs - Steve_12: 1214484329
+      Custom Edited - Minecraft Customs - Steve_13: 1586492707
+      Custom Edited - Minecraft Customs - Steve_14: -320143797
+      Custom Edited - Minecraft Customs - Steve_15: 855411088
+      Custom Edited - Minecraft Customs - Steve_16: -1371940570
+      Custom Edited - Minecraft Customs - Steve_17: 1262138025
+      Custom Edited - Minecraft Customs - Steve_18: 410716003
+      Custom Edited - Minecraft Customs - Steve_19: -1823969623
+      Custom Edited - Minecraft Customs - Steve_2: -778191640
+      Custom Edited - Minecraft Customs - Steve_20: 1958644370
+      Custom Edited - Minecraft Customs - Steve_21: -1862657789
+      Custom Edited - Minecraft Customs - Steve_22: 2058068484
+      Custom Edited - Minecraft Customs - Steve_23: 1089333038
+      Custom Edited - Minecraft Customs - Steve_24: 1393407656
+      Custom Edited - Minecraft Customs - Steve_25: -1129837011
+      Custom Edited - Minecraft Customs - Steve_26: -897858844
+      Custom Edited - Minecraft Customs - Steve_27: -1506778772
+      Custom Edited - Minecraft Customs - Steve_28: -1157752161
+      Custom Edited - Minecraft Customs - Steve_29: -2133821543
+      Custom Edited - Minecraft Customs - Steve_3: -272596584
+      Custom Edited - Minecraft Customs - Steve_30: -1025554392
+      Custom Edited - Minecraft Customs - Steve_31: 1926995028
+      Custom Edited - Minecraft Customs - Steve_32: 71196688
+      Custom Edited - Minecraft Customs - Steve_33: 784461638
+      Custom Edited - Minecraft Customs - Steve_34: -126224299
+      Custom Edited - Minecraft Customs - Steve_35: 858481489
+      Custom Edited - Minecraft Customs - Steve_36: -1165602495
+      Custom Edited - Minecraft Customs - Steve_37: -628118514
+      Custom Edited - Minecraft Customs - Steve_38: 542855465
+      Custom Edited - Minecraft Customs - Steve_39: -868215100
+      Custom Edited - Minecraft Customs - Steve_4: 948800708
+      Custom Edited - Minecraft Customs - Steve_5: -1902615033
+      Custom Edited - Minecraft Customs - Steve_6: 1862377773
+      Custom Edited - Minecraft Customs - Steve_7: 1018331818
+      Custom Edited - Minecraft Customs - Steve_8: 595070784
+      Custom Edited - Minecraft Customs - Steve_9: -79381411
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
